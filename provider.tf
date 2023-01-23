@@ -1,13 +1,13 @@
 terraform {
-	cloud {
-		organization = "harishankard29"
-		workspaces {
-			name = "demo-ecs"
-		}
-	}
+  cloud {
+    organization = "harishankard29"
+    workspaces {
+      name = "demo-ecs"
+    }
+  }
   required_providers {
     aws = {
-        source = "hashicorp/aws"
+      source = "hashicorp/aws"
     }
   }
 }
