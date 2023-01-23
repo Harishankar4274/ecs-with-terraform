@@ -33,15 +33,15 @@ resource "aws_ecs_task_definition" "demo_ecs_app_def" {
 }
 
 resource "aws_ecs_service" "main" {
-  name = var.aws_ecs_service_name
-  cluster = aws_ecs_cluster.ecs-cluster.id
+  name            = var.aws_ecs_service_name
+  cluster         = aws_ecs_cluster.ecs-cluster.id
   task_definition = aws_ecs_task_definition.demo_ecs_app_def.arn
-  desired_count = var.app_count
-  launch_type = "FARGATE"
+  desired_count   = var.app_count
+  launch_type     = "FARGATE"
 
   network_configuration {
-    security_groups = [aws_security_group.ecs_task.id]
-    subnets = data.aws_subnets.aws_vpc_private_subnets.*.id
+    security_groups  = [aws_security_group.ecs_task.id]
+    subnets          = data.aws_subnets.aws_vpc_private_subnets.*.id
     assign_public_ip = true
   }
 

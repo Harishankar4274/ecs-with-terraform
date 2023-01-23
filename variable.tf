@@ -101,13 +101,13 @@ variable "app_port" {
 }
 
 variable "app_count" {
-    type = numberm
-    description = "Number of replicas of the pod"
-    default = 2
+  type        = numberm
+  description = "Number of replicas of the pod"
+  default     = 2
 }
 
 variable "ecs_alb_name" {
-    type = string
-    description = "ALB Name"
-    default = "demo_ecs_alb"
+  type        = string
+  description = "ALB Name"
+  default     = "demo_ecs_alb"
 }

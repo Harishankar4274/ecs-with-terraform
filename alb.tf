@@ -1,7 +1,7 @@
 data "aws_subnet" "aws_vpc_public_subnets" {
-    filter {
-      cidr_blocks = var.aws_vpc_public_subnets
-    }  
+  filter {
+    cidr_blocks = var.aws_vpc_public_subnets
+  }
 }
 
 resource "aws_alb" "main" {
