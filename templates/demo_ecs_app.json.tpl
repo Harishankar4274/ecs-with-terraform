@@ -11,7 +11,6 @@
         "logDriver": "awslogs",
         "options": {
           "awslogs-group": "/ecs/cb-app",
-          "awslogs-region": "${aws_region}",
           "awslogs-stream-prefix": "ecs"
         }
     },
