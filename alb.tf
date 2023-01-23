@@ -1,8 +1,10 @@
 data "aws_subnet" "aws_vpc_public_subnets" {
   filter {
-    cidr_blocks = var.aws_vpc_public_subnets
+    name   = "tag:Name"
+    values = [var.aws_vpc_name]
   }
-  name = var.aws_vpc_name
+  cidr_block = "192.168.11.0/24"
+
 }
 
 resource "aws_alb" "main" {
@@ -12,7 +14,7 @@ resource "aws_alb" "main" {
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = "demo_ecs-target-group"
+  name        = "demo-ecs-target-group"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = module.vpc.vpc_id

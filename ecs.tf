@@ -11,20 +11,24 @@ data "template_file" "demo_ecs_app" {
     app_image      = data.aws_ecr_repository.demo_ecs_app.repository_url
     app_port       = var.app_port
     fargate_cpu    = var.fargate_cpu
-    fargate_memory = fargate_memory
+    fargate_memory = var.fargate_memory
     tag            = var.tag
   }
 }
 
-data "aws_subnets" "aws_vpc_private_subnets" {
+
+data "aws_subnet" "aws_vpc_private_subnets" {
   filter {
-    cidr_blocks = var.aws_vpc_private_subnets
+    name   = "tag:Name"
+    values = [var.aws_vpc_name]
   }
+  cidr_block = "192.168.1.0/24"
+
 }
 
 resource "aws_ecs_task_definition" "demo_ecs_app_def" {
   family                   = var.aws_ecs_task_def_fam
-  execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
+  execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
@@ -41,16 +45,19 @@ resource "aws_ecs_service" "main" {
 
   network_configuration {
     security_groups  = [aws_security_group.ecs_task.id]
-    subnets          = data.aws_subnets.aws_vpc_private_subnets.*.id
+    subnets          = data.aws_subnet.aws_vpc_private_subnets.*.id
     assign_public_ip = true
   }
 
   load_balancer {
     target_group_arn = aws_alb_target_group.app.id
+    container_port   = var.app_port
+    container_name   = var.aws_ecr_repository
   }
 
   depends_on = [
-    aws_alb_listerner.front_end,
-    aws_iam_role_policy_attachment.ecs_task_execution_role
+    aws_ecr_repository.demo_ecs_app,
+    aws_ecs_task_definition.demo_ecs_app_def
   ]
+
 }

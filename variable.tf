@@ -109,5 +109,26 @@ variable "app_count" {
 variable "ecs_alb_name" {
   type        = string
   description = "ALB Name"
-  default     = "demo_ecs_alb"
+  default     = "demo-ecs-alb"
+}
+
+variable "health_check_path" {
+  type    = string
+  default = "/"
+}
+
+variable "aws_sg_name" {
+  type        = string
+  description = "security group name"
+  default     = "demo_ecs_sg"
+}
+
+variable "tag" {
+  type    = string
+  default = "demo"
+}
+
+variable "ecs_task_execution_role_name" {
+  type    = string
+  default = "ecsTaskExecutionRole"
 }
