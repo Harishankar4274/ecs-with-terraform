@@ -32,21 +32,21 @@ resource "aws_ecs_task_definition" "demo_ecs_app_def" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
-#   container_definitions    = data.template_file.demo_ecs_app.render
-  container_definitions    = jsonencode([
-  {
-    name = var.aws_ecr_repository
-    image = var.aws_ecr_repository
-    cpu = var.fargate_cpu
-    memory = var.fargate_memory
-    portMappings = [
-      {
-        containerPort = var.app_port
-        hostPort = var.app_port
-      }
-    ]
-  }
-])
+  #   container_definitions    = data.template_file.demo_ecs_app.render
+  container_definitions = jsonencode([
+    {
+      name   = var.aws_ecr_repository
+      image  = var.aws_ecr_repository
+      cpu    = var.fargate_cpu
+      memory = var.fargate_memory
+      portMappings = [
+        {
+          containerPort = var.app_port
+          hostPort      = var.app_port
+        }
+      ]
+    }
+  ])
 }
 
 resource "aws_ecs_service" "main" {
