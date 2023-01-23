@@ -48,13 +48,3 @@ variable "environment" {
     type = string
     description = "Add the environment name"
 }
-
-variable "organization" {
-    type = string
-    description = "Terraform Organization Name"
-}
-
-variable "workspaces_name" {
-    type = string
-    description = "Enter the terraform workspace name"
-}

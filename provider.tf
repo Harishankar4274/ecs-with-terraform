@@ -1,8 +1,8 @@
 terraform {
 	cloud {
-		organization = var.organization
+		organization = "harishankard29"
 		workspaces {
-			name = var.workspaces_name
+			name = demo-ecs
 		}
 	}
   required_providers {
