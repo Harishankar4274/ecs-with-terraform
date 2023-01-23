@@ -2,7 +2,7 @@
 
 [
   {
-    "name": $(aws_ecr_repository),
+    "name": "demo_ecs_app",
     "image": "${app_image}:${tag}",
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
