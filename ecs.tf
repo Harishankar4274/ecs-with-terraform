@@ -3,6 +3,7 @@ resource "aws_ecs_cluster" "ecs-cluster" {
 }
 
 data "template_file" "demo_ecs_app" {
+  template = file("./templates/demo_ecs_app.json.tpl")
   vars = {
     app_image      = aws_ecr_repository.demo_ecs_app.repository_url
     app_port       = var.app_port
@@ -23,7 +24,6 @@ data "aws_subnet" "aws_vpc_private_subnets" {
 }
 
 resource "aws_ecs_task_definition" "demo_ecs_app_def" {
-    template = file("./templates/demo_ecs_app.json.tpl")
 
   family                   = var.aws_ecs_task_def_fam
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
