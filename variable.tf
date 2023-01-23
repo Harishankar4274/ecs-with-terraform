@@ -37,7 +37,7 @@ variable "aws_vpc_private_subnets" {
 variable "aws_vpc_public_subnets" {
   type        = list(string)
   description = "Add list of CIDR locks for public subnets in the vpc. Example ['192.168.11.0/24','192.168.12.0/24','192.168.13.0/24']"
-  default     = ["192.168.11.0/24"]
+  default     = ["192.168.11.0/24","192.168.12.0/24"]
 }
 
 variable "enable_nat_gateway" {
