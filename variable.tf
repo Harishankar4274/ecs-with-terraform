@@ -83,9 +83,9 @@ variable "fargate_cpu" {
 }
 
 variable "fargate_memory" {
-  type        = string
+  type        = number
   description = "Enter required memory"
-  default     = "2Gi"
+  default     = 2000
 }
 
 variable "aws_ecs_service_name" {
