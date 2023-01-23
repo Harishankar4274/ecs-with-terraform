@@ -13,6 +13,7 @@ variable "aws_profile" {
 variable "aws_vpc_name" {
     type = string
     description = "Add name for your VPC."
+    default = "demo_ecs_vpc"
 }
 
 variable "aws_vpc_cidr" {
@@ -42,9 +43,11 @@ variable "aws_vpc_public_subnets" {
 variable "enable_nat_gateway" {
     type = bool
     description = "Enable or disable the NAT gateway. Enter a boolean value 'true' or 'false'."
+    default = true
 }
 
 variable "environment" {
     type = string
     description = "Add the environment name"
+    default = "demo"
 }
