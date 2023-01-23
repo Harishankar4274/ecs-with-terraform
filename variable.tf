@@ -101,7 +101,7 @@ variable "app_port" {
 }
 
 variable "app_count" {
-  type        = numberm
+  type        = number
   description = "Number of replicas of the pod"
   default     = 2
 }
