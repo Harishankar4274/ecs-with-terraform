@@ -70,7 +70,8 @@ resource "aws_ecs_service" "main" {
 
   depends_on = [
     aws_ecr_repository.demo_ecs_app,
-    aws_ecs_task_definition.demo_ecs_app_def
+    aws_ecs_task_definition.demo_ecs_app_def,
+    module.vpc
   ]
 
 }

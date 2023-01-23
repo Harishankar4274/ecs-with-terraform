@@ -79,7 +79,7 @@ variable "aws_ecs_task_def_fam" {
 variable "fargate_cpu" {
   type        = number
   description = "enter required number of cpus"
-  default     = 1
+  default     = 1024
 }
 
 variable "fargate_memory" {

@@ -1,4 +1,4 @@
-data "aws_subnet" "aws_vpc_public_subnets" {
+data "aws_subnet" "aws_vpc_public_subnet_1" {
   filter {
     name   = "tag:Name"
     values = [var.aws_vpc_name]
@@ -7,9 +7,18 @@ data "aws_subnet" "aws_vpc_public_subnets" {
 
 }
 
+data "aws_subnet" "aws_vpc_public_subnet_2" {
+  filter {
+    name   = "tag:Name"
+    values = [var.aws_vpc_name]
+  }
+  cidr_block = "192.168.12.0/24"
+
+}
+
 resource "aws_alb" "main" {
   name            = var.ecs_alb_name
-  subnets         = data.aws_subnet.aws_vpc_public_subnets.*.id
+  subnets         = [ data.aws_subnet.aws_vpc_public_subnet_1.*.id , data.aws_subnet.aws_vpc_public_subnet_2.*.id]
   security_groups = [aws_security_group.lb.id]
 }
 
