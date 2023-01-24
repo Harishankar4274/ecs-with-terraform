@@ -15,14 +15,14 @@ data "template_file" "demo_ecs_app" {
 }
 
 
-data "aws_subnet" "aws_vpc_private_subnets" {
-  filter {
-    name   = "tag:Name"
-    values = [var.aws_vpc_name]
-  }
-  cidr_block = "192.168.1.0/24"
+# data "aws_subnet" "aws_vpc_private_subnets" {
+#   filter {
+#     name   = "tag:Name"
+#     values = [var.aws_vpc_name]
+#   }
+#   cidr_block = "192.168.1.0/24"
 
-}
+# }
 
 resource "aws_ecs_task_definition" "demo_ecs_app_def" {
 
@@ -58,7 +58,7 @@ resource "aws_ecs_service" "main" {
 
   network_configuration {
     security_groups  = [aws_security_group.ecs_task.id]
-    subnets          = data.aws_subnet.aws_vpc_private_subnets.*.id
+    subnets          = module.vpc.private_subnets
     assign_public_ip = true
   }
 
