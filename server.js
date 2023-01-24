@@ -7,35 +7,35 @@ app.set("port", process.env.PORT || 80);
 
 app.get('/', function (req, res) {
    res.writeHead(200, {'Content-Type': 'application/json'});
-   var response = { "response" : "This is GET method." }
+   var response = { "response" : "Hi, This isGET method." }
    console.log(response);
    res.end(JSON.stringify(response));
 })
 
 app.get('/:id', function (req, res) {
    res.writeHead(200, {'Content-Type': 'application/json'});
-   var response = { "response" : "This is GET method with id=" + req.params.id + "." }
+   var response = { "response" : "Hi, This isGET method with id=" + req.params.id + "." }
    console.log(response);
    res.end(JSON.stringify(response));
 })
 
 app.post('/', function (req, res) {
    res.writeHead(200, {'Content-Type': 'application/json'});
-   var response = { "response" : "This is POST method." }
+   var response = { "response" : "Hi, This isPOST method." }
    console.log(response);
    res.end(JSON.stringify(response));
 })
 
 app.put('/', function (req, res) {
    res.writeHead(200, {'Content-Type': 'application/json'});
-   var response = { "response" : "This is PUT method." }
+   var response = { "response" : "Hi, This isPUT method." }
    console.log(response);
    res.end(JSON.stringify(response));
 })
 
 app.delete('/', function (req, res) {
    res.writeHead(200, {'Content-Type': 'application/json'});
-   var response = { "response" : "This is DELETE method." }
+   var response = { "response" : "Hi, This isDELETE method." }
    console.log(response);
    res.end(JSON.stringify(response));
 })
