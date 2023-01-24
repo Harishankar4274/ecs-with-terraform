@@ -18,7 +18,7 @@
 
 resource "aws_alb" "main" {
   name            = var.ecs_alb_name
-  subnets         = module.vpc.public_subnets.id 
+  subnets         = module.vpc.public_subnets
   security_groups = [aws_security_group.lb.id]
 }
 
