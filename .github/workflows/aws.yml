@@ -32,7 +32,7 @@ on:
 
 env:
   AWS_REGION: ap-south-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: 600023384173.dkr.ecr.ap-south-1.amazonaws.com/demo_ecs_app           # set this to your Amazon ECR repository name
+  ECR_REPOSITORY: demo_ecs_app             # 600023384173.dkr.ecr.ap-south-1.amazonaws.com/demo_ecs_app           # set this to your Amazon ECR repository name
   ECS_SERVICE: demo_ecs_svc                 # set this to your Amazon ECS service name
   ECS_CLUSTER: demo_ecs_cluster                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: /templates/demo_ecs_app.json # set this to the path to your Amazon ECS task definition
