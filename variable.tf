@@ -25,19 +25,19 @@ variable "aws_vpc_cidr" {
 variable "aws_vpc_azs" {
   type        = list(string)
   description = "Add list of AZs available in the region that you want to use. Example ['ap-south-1a', 'ap-south-1b', 'ap-south-1c']"
-  default     = ["ap-south-1a","ap-south-1b"]
+  default     = ["ap-south-1a", "ap-south-1b"]
 }
 
 variable "aws_vpc_private_subnets" {
   type        = list(string)
   description = "Add list of CIDR locks for private subnets in the vpc. Example ['192.168.1.0/24','192.168.2.0/24','192.168.3.0/24']"
-  default     = ["192.168.1.0/24","192.168.2.0/24"]
+  default     = ["192.168.1.0/24", "192.168.2.0/24"]
 }
 
 variable "aws_vpc_public_subnets" {
   type        = list(string)
   description = "Add list of CIDR locks for public subnets in the vpc. Example ['192.168.11.0/24','192.168.12.0/24','192.168.13.0/24']"
-  default     = ["192.168.11.0/24","192.168.12.0/24"]
+  default     = ["192.168.11.0/24", "192.168.12.0/24"]
 }
 
 variable "enable_nat_gateway" {
